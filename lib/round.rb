@@ -30,13 +30,12 @@ class Round
       take_turn(guess)
       card_num += 1
       #binding.pry
-    end
-
+  end
     puts "****** Game Over! ******"
     puts "You had #{@number_correct} guesses out of #{deck.cards.length} for a
-          total score of #{@percent_correct}."
-    puts "STEM - #{percent_stem}% correct"
-    puts "Geography - #{percent_geography}% correct."
+          total score of #{@percent_correct}% correct."
+    puts "STEM - #{@percent_stem}% correct"
+    puts "Geography - #{@percent_geography}% correct."
   end
 
 
