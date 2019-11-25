@@ -26,7 +26,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_has_cards_in_deck
-
+    # binding.pry
     assert_equal @cards, @deck.cards
   end
 
@@ -37,7 +37,6 @@ class DeckTest < Minitest::Test
 
   def test_cards_in_category
 
-
     assert @deck.cards_in_category(:STEM)
   end
 
@@ -46,4 +45,9 @@ class DeckTest < Minitest::Test
     assert @deck.cards_in_category("Pop Culture")
   end
 
+  def test_each_card_has_answers
+    @deck.cards[0].answer
+
+    assert_equal "Juneau", @deck.cards[0].answer
+  end
 end
