@@ -16,7 +16,6 @@ deck = Deck.new(cards)
 
 round = Round.new(deck)
 
-
 puts "Welcome! You're playing with 4 cards."
 puts  "-" * 50
 
