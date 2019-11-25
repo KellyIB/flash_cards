@@ -54,7 +54,7 @@ class Round
       if new_turn.correct? == true
         @feedback_array << new_turn.feedback
         @number_correct += 1 &&
-      if new_turn.card.category == :STEM
+          if new_turn.card.category == :STEM
             @number_stem_correct += 1
           else
             new_turn.card.category == "Geography"
