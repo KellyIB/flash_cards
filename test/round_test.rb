@@ -120,6 +120,23 @@ class DeckTest < Minitest::Test
     @round.take_turn("Juneau")
     @round.take_turn("Mars")
 
-    assert_equal
+    assert_equal 100.0, @round.percent_correct
+  end
+
+  def test_percent_correct_by_category
+    @round.take_turn("Juneau")
+    @round.take_turn("Mars")
+
+    assert_equal 100.0, @round.percent_geography
+    assert_equal 100.0, @round.percent_stem
+  end
+
+  def test_take_turn_to_card3
+    @round.take_turn("Juneau")
+    @round.take_turn("Mars")
+    
+#binding.pry
+    assert_equal @deck.cards[2], @round.current_card
+  end
 
 end
