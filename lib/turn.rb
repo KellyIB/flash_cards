@@ -23,8 +23,5 @@ class Turn
       end
   end
 
- def category
-   @card.category
- end
 
 end

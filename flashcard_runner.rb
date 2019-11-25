@@ -22,13 +22,6 @@ puts  "-" * 50
 
 round.start
 
-round.take_turn(@guess)
-
-round.start
-
-round.take_turn(@guess)
-
-binding.pry
 
 
 

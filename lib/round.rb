@@ -3,7 +3,7 @@
 class Round
   attr_accessor :deck, :turns, :current_card, :number_correct, :cards_index,
               :number_stem_correct, :number_geography_correct, :percent_correct,
-              :percent_geography, :percent_stem, :guess
+              :percent_geography, :percent_stem, :guess, :new_turn
 
   def initialize(deck, turns = [])
     @deck = deck
@@ -18,6 +18,7 @@ class Round
     @stem_turns = 0
     @geography_turns = 0
     @guess = guess
+    @new_turn = new_turn
   end
 
   def start
@@ -28,7 +29,14 @@ class Round
       @guess = gets.chomp
       take_turn(guess)
       card_num += 1
+      #binding.pry
     end
+
+    puts "****** Game Over! ******"
+    puts "You had #{@number_correct} guesses out of #{deck.cards.length} for a
+          total score of #{@percent_correct}."
+    puts "STEM - #{percent_stem}% correct"
+    puts "Geography - #{percent_geography}% correct."
   end
 
 
@@ -37,20 +45,19 @@ class Round
     @turns << new_turn
     @cards_index += 1
 
-      if new_turn.category == :STEM
+      if new_turn.card.category == :STEM
         @stem_turns += 1
-      else new_turn.category == "Geography"
+      else new_turn.card.category == "Geography"
         @geography_turns += 1
       end
-
+    puts new_turn.feedback
       if new_turn.correct? == true
         @feedback_array << new_turn.feedback
-        @number_correct += 1
-
-          if new_turn.category == :STEM
+        @number_correct += 1 &&
+      if new_turn.card.category == :STEM
             @number_stem_correct += 1
           else
-            new_turn.category == "Geography"
+            new_turn.card.category == "Geography"
             @number_geography_correct += 1
           end
       end
