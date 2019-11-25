@@ -3,7 +3,7 @@
 class Round
   attr_accessor :deck, :turns, :current_card, :number_correct, :cards_index,
               :number_stem_correct, :number_geography_correct, :percent_correct,
-              :percent_geography, :percent_stem
+              :percent_geography, :percent_stem, :guess
 
   def initialize(deck, turns = [])
     @deck = deck
@@ -17,7 +17,20 @@ class Round
     @percent_correct = 10.0
     @stem_turns = 0
     @geography_turns = 0
+    @guess = guess
   end
+
+  def start
+    card_num = 1
+    deck.cards.each do |card|
+      puts "This is card number #{card_num} of #{deck.cards.length}."
+      puts "Question: #{deck.cards[@cards_index].question}"
+      @guess = gets.chomp
+      take_turn(guess)
+      card_num += 1
+    end
+  end
+
 
   def take_turn(guess)
     new_turn = Turn.new(guess, @current_card)
@@ -51,22 +64,4 @@ class Round
       new_turn
 
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
